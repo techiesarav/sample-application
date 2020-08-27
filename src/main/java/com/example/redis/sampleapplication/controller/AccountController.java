@@ -36,7 +36,7 @@ public class AccountController {
 		return accountDao.getAll();
 	}
 	
-	@CachePut(value="accounts" ,key = "#account.getId()")
+	@CacheEvict(value="accounts" ,key = "#account.getId()")
 	@PutMapping("/account/{accountId}")
 	public void updateAccount(@RequestBody Account account) {
 		System.out.println("Update Account");

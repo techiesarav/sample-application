@@ -51,11 +51,9 @@ public class AccountDao {
 				.addValue("name", account.getName())
 				.addValue("location", account.getLocation())
 				.addValue("id",account.getId());
-		 jdbcTemplate.update(
-				"update account set name=?"
-				+ " and location=?"
-				+ " where id=?",account.getName()
-				,account.getLocation(),account.getId());
+		namedParameterJdbcTemplate.update(
+				"update account set name = :name, location = :location where id = :id"
+				,parameter);
 	}
 	
 	public void deleteAccount(int id) {
